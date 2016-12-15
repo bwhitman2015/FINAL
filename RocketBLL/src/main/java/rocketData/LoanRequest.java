@@ -56,6 +56,10 @@ public class LoanRequest implements Serializable {
 	public void setdPayment(double dPayment) {
 		this.dPayment = dPayment;
 	}
+	public void setdExpenses(double parseDouble) {
+		this.dExpenses = dExpenses
+		
+	}
 	
 	
 }

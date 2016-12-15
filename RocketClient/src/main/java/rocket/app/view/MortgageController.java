@@ -94,7 +94,7 @@ public class MortgageController {
 		lq.setiCreditScore(Integer.parseInt(txtCreditScore.getText()));
 		lq.setiDownPayment(Integer.parseInt(txtDownPayment.getText()));
 		lq.setdExpenses(Double.parseDouble(txtExpenses.getText()));
-		lq.setdIncome(Double.parseDouble(txtIncome.getText()));
+		lq.setdRate(Double.parseDouble(txtIncome.getText()));
 		lq.setdRate(Double.parseDouble(txtHouseCost.getText())-Double.parseDouble(txtDownPayment.getText()));
 		lq.setiTerm(term);
 
@@ -116,13 +116,13 @@ public class MortgageController {
 		double downPayment = 0;
 		double piti;
 		
-		if (lRequest.getdIncome()*.28>(lRequest.getdIncome()*.36) - lRequest.getdExpenses())
+		if (lRequest.getdRate()*.28>(lRequest.getdRate()*.36) - lRequest.getdExpenses())
 		{
-			piti = lRequest.getdIncome() * .28;
+			piti = lRequest.getdRate() * .28;
 		}
 		else
 		{
-			piti = ((lRequest.getdIncome(*.36)-lRequest.getdExpenses());
+			piti = ((lRequest.getdRate(*.36)-lRequest.getdExpenses());
 		}
 		
 		downPayment = piti;
