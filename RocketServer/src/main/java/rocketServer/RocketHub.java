@@ -2,6 +2,7 @@ package rocketServer;
 
 import java.io.IOException;
 
+import exceptions.RateException;
 import netgame.common.Hub;
 import rocketBase.RateBLL;
 import rocketData.LoanRequest;
@@ -33,6 +34,17 @@ public class RocketHub extends Hub {
 			//	Determine if payment, call RateBLL.getPayment
 			//	
 			//	you should update lq, and then send lq back to the caller(s)
+			
+			try {
+				int x = lq.getiCreditScore();
+				lq.setdRate(RateBLL.getRate(x));
+			} 
+			catch (RateException e) {
+				sendToAll(e);
+			}
+			
+			double payment = RateBLL.getPayment(lq.getdAmount(), lq.getiTerm(), lq.getdAmount(), 0.00, false);
+			lq.setdPayment(payment);
 			
 			sendToAll(lq);
 		}
